@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 3ba367572f9a14a4a8109030f97e39a2
+timeCreated: 1523473078
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Aku & Kamu
+  fontNames:
+  - Aku & Kamu
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
