@@ -18,7 +18,7 @@ public class CameraController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+      /*  if (Input.GetKeyDown(KeyCode.Escape))
             doMovement = !doMovement;
 
         if (!doMovement)
@@ -57,7 +57,7 @@ public class CameraController : MonoBehaviour {
         pos.y -= scroll * 1000 * scrollSpeed * Time.deltaTime;
         pos.y = Mathf.Clamp(pos.y, minY, maxY);
         transform.position = pos;
-
+        */
 
     }
 }

@@ -12,11 +12,7 @@ public class Mainmenu : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKey("escape"))
-        {
-            Debug.Log("Exit!!");
-            Application.Quit();
-        }
+        
 	}
 
     public void PlayGame()

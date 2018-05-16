@@ -32,7 +32,8 @@ public class NodeUI : MonoBehaviour
             upgradeCost.text = "MAX";
             upgradeButton.interactable = false;
         }
-            
+
+        sellAmount.text = "$" + target.turretBlueprint.GetSellAmount();
           
         ui.SetActive(true);
     }
