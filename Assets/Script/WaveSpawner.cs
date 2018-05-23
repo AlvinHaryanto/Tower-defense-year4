@@ -43,30 +43,30 @@ public class WaveSpawner : MonoBehaviour
     IEnumerator SpawnWave()
     {
         waveIndex++;
-        
+        PlayerStats.Rounds++;
 
         for (int i = 0; i < waveIndex; i++)
         {
             for (int j = 0; j < 2; j++)
             {
                 SpawnKepik();
-                yield return new WaitForSeconds(0.3f);
+                yield return new WaitForSeconds(0.5f);
             }
         }
 
         for (int i = 0; i < waveIndex; i++)
         {
             SpawnCapung();
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.7f);
         }
 
-        if (waveIndex % 2 == 0)
+        if (waveIndex % 4 == 0)
         {
             x++;
             for (int i = 0; i < x; i++)
             {
                 SpawnSemut();
-                yield return new WaitForSeconds(0.7f);
+                yield return new WaitForSeconds(1f);
             }
         }
 
@@ -76,7 +76,7 @@ public class WaveSpawner : MonoBehaviour
             for (int i = 0; i < boss; i++)
             {
                 SpawnKelabang();
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(2f);
             }
         }
     }

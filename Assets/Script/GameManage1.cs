@@ -5,12 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class GameManage1 : MonoBehaviour
 {
-    bool gameEnded = false;
+    public static bool GameIsOver;
     public float restartDelay = 1f;
+    public GameObject gameOverUI;
 
-     void Update()
+    void Start()
     {
-        if (gameEnded)
+        GameIsOver = false;
+    }
+
+
+    void Update()
+    {
+        if (GameIsOver)
             return;
 
         if(PlayerStats.Lives <= 0)
@@ -24,13 +31,8 @@ public class GameManage1 : MonoBehaviour
 
     public void EndGame()
     {
-        if (gameEnded == false)
-        {
-            gameEnded = true;
-            Debug.Log("GameOver");
-            //Invoke("Restart", restartDelay);
-            SceneManager.LoadScene("RealMainmenu");
-        }
+        GameIsOver = true;
+        gameOverUI.SetActive(true);
     }
 
     void Restart()
