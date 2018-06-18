@@ -1,16 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-using System;
-
 public class WaveSpawner : MonoBehaviour
 {
+    public static int EnemiesAlive = 0;
 
+    public Wave[] waves;
     public Transform capungPrefab;
 
     public Transform kepikPrefab;
 
     public Transform semutPrefab;
+    public Transform enemyPrefab;
 
     public Transform kelabangPrefab;
 
@@ -27,11 +28,17 @@ public class WaveSpawner : MonoBehaviour
 
     void Update()
     {
+        if(EnemiesAlive > 0)
+        {
+            return;
+        }
+
         if (countdown <= 0f)
         {
             StartCoroutine(SpawnWave());
             //SpawnWave();
             countdown = timeBetweenWaves;
+            return;
         }
         countdown -= Time.deltaTime;
 
@@ -42,18 +49,21 @@ public class WaveSpawner : MonoBehaviour
 
     IEnumerator SpawnWave()
     {
-        waveIndex++;
+        
         PlayerStats.Rounds++;
 
-        for (int i = 0; i < waveIndex; i++)
+        Wave wave = waves[waveIndex];
+
+
+        for (int i = 0; i < wave.count; i++)
         {
             for (int j = 0; j < 2; j++)
             {
-                SpawnKepik();
-                yield return new WaitForSeconds(0.5f);
+                SpawnEnemy(wave.enemy);
+                yield return new WaitForSeconds(0.5f / wave.rate);
             }
         }
-
+        /*
         for (int i = 0; i < waveIndex; i++)
         {
             SpawnCapung();
@@ -78,26 +88,44 @@ public class WaveSpawner : MonoBehaviour
                 SpawnKelabang();
                 yield return new WaitForSeconds(2f);
             }
+        }*/
+        waveIndex++;
+
+        if(waveIndex == waves.Length)
+        {
+            Debug.Log("Level Won!");
+            this.enabled = false;
         }
+    }
+
+  
+    void SpawnEnemy(GameObject enemy)
+    {
+        Instantiate(enemyPrefab);
+        EnemiesAlive++;
     }
 
     void SpawnCapung()
     {
         Instantiate(capungPrefab);
+        EnemiesAlive++;
     }
 
     void SpawnKepik()
     {
         Instantiate(kepikPrefab);
+        EnemiesAlive++;
     }
 
     void SpawnSemut()
     {
         Instantiate(semutPrefab);
+        EnemiesAlive++;
     }
 
     void SpawnKelabang()
     {
         Instantiate(kelabangPrefab);
+        EnemiesAlive++;
     }
 }
