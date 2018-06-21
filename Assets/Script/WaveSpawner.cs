@@ -5,26 +5,35 @@ public class WaveSpawner : MonoBehaviour
 {
     public static int EnemiesAlive = 0;
 
+    public GameManage1 gameManager;
+
     public Wave[] waves;
     public Transform capungPrefab;
-
     public Transform kepikPrefab;
-
     public Transform semutPrefab;
-    public Transform enemyPrefab;
-
     public Transform kelabangPrefab;
-
+    public Transform enemyPrefab;
     public Transform spawnPoint;
+
 
     public float timeBetweenWaves = 8f;
     private float countdown = 3f;
-
     public Text waveCountdownText;
 
     private int waveIndex = 0;
     public int boss = 0;
     public int x = 0;
+   
+    public static bool GameIsOver;
+    public GameObject gameOverUI;
+    public GameObject completeLevelUI;
+
+
+    void Start()
+    {
+        GameIsOver = false;
+    }
+
 
     void Update()
     {
@@ -32,6 +41,15 @@ public class WaveSpawner : MonoBehaviour
         {
             return;
         }
+
+        if (waveIndex == waves.Length)
+        {
+
+            WinLevel();
+            this.enabled = false;
+            Debug.Log("Abis");
+        }
+
 
         if (countdown <= 0f)
         {
@@ -91,14 +109,17 @@ public class WaveSpawner : MonoBehaviour
         }*/
         waveIndex++;
 
-        if(waveIndex == waves.Length)
-        {
-            Debug.Log("Level Won!");
-            this.enabled = false;
-        }
+       
     }
 
-  
+    public void WinLevel()
+    {
+
+        GameIsOver = true;
+        completeLevelUI.SetActive(true);
+        Debug.Log("Abis");
+    }
+
     void SpawnEnemy(GameObject enemy)
     {
         Instantiate(enemyPrefab);

@@ -36,8 +36,8 @@ public class Node : MonoBehaviour {
     }
     void OnMouseDown()
     {
-        if (EventSystem.current.IsPointerOverGameObject())
-            return;
+        /*if (EventSystem.current.IsPointerOverGameObject())
+            return;*/
 
       
         
@@ -48,7 +48,10 @@ public class Node : MonoBehaviour {
         }
 
         if (!buildManager.CanBuild)
+        {
             return;
+        }
+            
 
         //Build a turret
         BuildTurret(buildManager.GetTurretToBuild());
@@ -83,6 +86,8 @@ public class Node : MonoBehaviour {
 
         Destroy(turret);
         turretBlueprint = null;
+        isUpgraded = false;
+        return;
     }
 
     public void UpgradeTurret()
@@ -118,13 +123,19 @@ public class Node : MonoBehaviour {
     void OnMouseEnter()
     {
 
-        if (EventSystem.current.IsPointerOverGameObject())
+        /*if (EventSystem.current.IsPointerOverGameObject())
+        {
+            Debug.Log("aa");
             return;
+            
+        }*/
+            
 
         if (!buildManager.CanBuild)
             return;
         if (buildManager.HasMoney)
         {
+            Debug.Log("ADA UANG");
             rend.material.color = hoverColor;
         }
         else

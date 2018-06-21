@@ -13,6 +13,7 @@ public class LevelSelector : MonoBehaviour {
     public void LevelSatu()
     {
         SceneManager.LoadScene("Level01");
+        
 
     }
 

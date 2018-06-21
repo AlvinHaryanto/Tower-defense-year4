@@ -67,5 +67,4 @@ public class BuildManager : MonoBehaviour {
     {
         return turretToBuild;
     }
-
 }
